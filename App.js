@@ -6,23 +6,25 @@ import * as React from 'react';
 import { Button, View, Text,  TouchableOpacity,  Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import splash from './pages/splash';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import login from './pages/login';
 import register from './pages/register';
-
-import { createDrawerNavigator } from '@react-navigation/drawer';
-// Import Custom Sidebar
-import CustomSidebarMenu from './pages/CustomSidebarMenu';
+import Dashboard from './pages/Admin/Dashboard'
 import SplashScreen from './pages/SplashScreen'
 import DrawerNavigatorRoutes from './pages/DrawerNavigatorRoutes'
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+
 
 const Auth = () => {
   // Stack Navigator for Login and Sign up Screen
   return (
     <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Screen
+        name="HomeScreen"
+        component={Dashboard}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="LoginScreen"
         component={login}

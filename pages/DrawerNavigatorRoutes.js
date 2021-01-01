@@ -11,6 +11,10 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Import Screens
 import splash from './splash';
 import SettingsScreen from './SettingsScreen';
+import Dashboard from './Admin/Dashboard';
+import Doctor from './Admin/Doctor';
+import Patient from './Admin/Patient';
+import Appoint from './Admin/Appoint';
 import CustomSidebarMenu from './CustomSidebarMenu';
 import NavigationDrawerHeader from './NavigationDrawerHeader';
 
@@ -22,9 +26,9 @@ const homeScreenStack = ({navigation}) => {
     <Stack.Navigator initialRouteName="HomeScreen">
       <Stack.Screen
         name="HomeScreen"
-        component={splash}
+        component={Dashboard}
         options={{
-          title: 'Home', //Set Header Title
+          title: 'Admin Dashboard', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -41,7 +45,7 @@ const homeScreenStack = ({navigation}) => {
   );
 };
 
-const settingScreenStack = ({navigation}) => {
+const doctorScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
       initialRouteName="SettingsScreen"
@@ -58,10 +62,69 @@ const settingScreenStack = ({navigation}) => {
         },
       }}>
       <Stack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
+        name="DoctorScreen"
+        component={Doctor}
         options={{
-          title: 'Settings', //Set Header Title
+          title: 'Doctors ', //Set Header Title
+         
+        }}
+        
+      />
+      
+    </Stack.Navigator>
+  );
+};
+
+const patientScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="SettingsScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+    
+       <Stack.Screen
+        name="PatientScreen"
+        component={Patient}
+        options={{
+          title: 'Patients ', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const appointScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="SettingsScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+    
+       <Stack.Screen
+        name="AppointScreen"
+        component={Appoint}
+        options={{
+          title: 'Appointments ', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -72,17 +135,39 @@ const DrawerNavigatorRoutes = (props) => {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
+
         activeTintColor: '#cee1f2',
         color: '#cee1f2',
         itemStyle: {marginVertical: 5, color: 'white'},
         labelStyle: {
-          color: '#d8d8d8',
+          color: 'black',
         },
       }}
       screenOptions={{headerShown: false}}
+
       drawerContent={CustomSidebarMenu}
     >
-      <Drawer.Screen
+         <Drawer.Screen
+        name="Dashboard"
+        options={{drawerLabel: 'Dashboard'}}
+        component={homeScreenStack}
+      />
+    <Drawer.Screen
+        name="DoctorScreen"
+        options={{drawerLabel: 'Doctor'}}
+        component={doctorScreenStack}
+      />
+       <Drawer.Screen
+        name="PatientScreen"
+        options={{drawerLabel: 'Patient'}}
+        component={patientScreenStack}
+      />
+       <Drawer.Screen
+        name="Appointment Screen"
+        options={{drawerLabel: 'Appointment'}}
+        component={appointScreenStack}
+      />
+            {/* <Drawer.Screen
         name="homeScreenStack"
         options={{drawerLabel: 'Home Screen'}}
         component={homeScreenStack}
@@ -91,7 +176,8 @@ const DrawerNavigatorRoutes = (props) => {
         name="settingScreenStack"
         options={{drawerLabel: 'Setting Screen'}}
         component={settingScreenStack}
-      />
+      /> */}
+
     </Drawer.Navigator>
   );
 };

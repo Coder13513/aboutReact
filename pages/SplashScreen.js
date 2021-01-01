@@ -28,7 +28,8 @@ const SplashScreen = ({navigation}) => {
     //       value === null ? 'Auth' : 'DrawerNavigationRoutes'
     //     ),
     //   );
-    navigation.navigate('Auth')
+    navigation.replace('Auth');
+   
     },5000);
   }, []);
 

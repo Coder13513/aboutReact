@@ -4,6 +4,7 @@
 // Import React and Component
 import React, {useState, createRef} from 'react';
 import {
+  Alert,
   StyleSheet,
   TextInput,
   View,
@@ -33,6 +34,14 @@ const RegisterScreen = (props) => {
   const emailInputRef = createRef();
   const ageInputRef = createRef();
   const addressInputRef = createRef();
+
+  const sendMessage = () => {
+    Alert.alert(userEmail);
+    setIsRegistraionSuccess(true);
+    // navigation.replace('login');
+    // this.props.navigation.navigate('HomeScreenRoute');
+    // this.props.navigation.goBack();
+}
 
   const handleSubmitButton = () => {
     setErrortext('');
@@ -226,7 +235,7 @@ const RegisterScreen = (props) => {
           <TouchableOpacity
             style={styles.buttonStyle}
             activeOpacity={0.5}
-            onPress={handleSubmitButton}>
+            onPress={sendMessage}>
             <Text style={styles.buttonTextStyle}>
               REGISTER
             </Text>

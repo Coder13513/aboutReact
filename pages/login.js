@@ -31,7 +31,7 @@ const LoginScreen = ({navigation}) => {
 
 
  const sendMessage = () => {
-    Alert.alert(userEmail, userPassword);
+    // Alert.alert(userEmail, userPassword);
     navigation.replace('DrawerNavigationRoutes');
     // this.props.navigation.navigate('HomeScreenRoute');
     // this.props.navigation.goBack();
