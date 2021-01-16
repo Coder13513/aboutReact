@@ -19,8 +19,9 @@ import {
 import Loader from '../pages/Loader';
 
 const RegisterScreen = (props) => {
-  const [userName, setUserName] = useState('');
+ 
   const [userEmail, setUserEmail] = useState('');
+  const [userName, setUserName] = useState('');
   const [userAge, setUserAge] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,10 +36,10 @@ const RegisterScreen = (props) => {
   const ageInputRef = createRef();
   const addressInputRef = createRef();
 
-  const sendMessage = () => {
+  const sendMessage = ({navigation}) => {
     Alert.alert(userEmail);
     setIsRegistraionSuccess(true);
-    // navigation.replace('login');
+    navigation.navigate('login');
     // this.props.navigation.navigate('HomeScreenRoute');
     // this.props.navigation.goBack();
 }
@@ -129,7 +130,7 @@ const RegisterScreen = (props) => {
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('LoginScreen')}>
+          onPress={() => navigation.navigate('login')}>
           <Text style={styles.buttonTextStyle}>Login Now</Text>
         </TouchableOpacity>
       </View>

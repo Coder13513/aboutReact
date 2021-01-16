@@ -255,7 +255,10 @@ const styles = StyleSheet.create({
     // backgroundColor:'red'
 },
 });
+
+
 // --------------------------old login-------------------
+
 // Navigate Between Screens using React Navigation in React Native //
 // https://aboutreact.com/react-native-stack-navigation //
 // import * as React from 'react';

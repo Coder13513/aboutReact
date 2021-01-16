@@ -14,9 +14,17 @@ import SettingsScreen from './SettingsScreen';
 import Dashboard from './Admin/Dashboard';
 import Doctor from './Admin/Doctor';
 import Patient from './Admin/Patient';
-import Appoint from './Admin/Appoint';
+import Appoint from './Patient/Appoint';
+import status from './Patient/status';
+import viewDoctor from './Patient/viewDoctor';
+import Staff from './Admin/Staff';
+import Attend from './Admin/Attend';
 import CustomSidebarMenu from './CustomSidebarMenu';
 import NavigationDrawerHeader from './NavigationDrawerHeader';
+import Home from './Patient/Home';
+import profile from './Patient/profile';
+import Search from './Patient/Search'
+// import DC from './DC';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -26,26 +34,84 @@ const homeScreenStack = ({navigation}) => {
     <Stack.Navigator initialRouteName="HomeScreen">
       <Stack.Screen
         name="HomeScreen"
-        component={Dashboard}
+        component={Home}
         options={{
-          title: 'Admin Dashboard', //Set Header Title
+          title: 'Welcome', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
+         
           headerStyle: {
             backgroundColor: '#307ecc', //Set Header color
+            
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
             fontWeight: 'bold', //Set Header text style
           },
+          headerTitleAlign:'center'
         }}
       />
+       <Stack.Screen
+        name="AppointScreen"
+        component={Appoint}
+        options={{
+          title: 'Create Appointments', //Set Header Title
+        
+         
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+            
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+          headerTitleAlign:'center'
+        }}
+        /> 
+         <Stack.Screen
+        name="StatusScreen"
+        component={status}
+        options={{
+          title: 'View Appointments', //Set Header Title
+         
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+            
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+          headerTitleAlign:'center'
+        }}
+        />
+         <Stack.Screen
+        name="VisitingScreen"
+        component={viewDoctor}
+        options={{
+          title: 'View Visiting Doctors', //Set Header Title
+         
+          headerStyle: {
+            backgroundColor: '#307ecc', //Set Header color
+            
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+          headerTitleAlign:'center'
+        }}
+        />
+  
+   
+  
     </Stack.Navigator>
   );
 };
 
-const doctorScreenStack = ({navigation}) => {
+const profileScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
       initialRouteName="SettingsScreen"
@@ -62,10 +128,10 @@ const doctorScreenStack = ({navigation}) => {
         },
       }}>
       <Stack.Screen
-        name="DoctorScreen"
-        component={Doctor}
+        name="ProfileScreen"
+        component={profile}
         options={{
-          title: 'Doctors ', //Set Header Title
+          title: 'User Profile ', //Set Header Title
          
         }}
         
@@ -75,67 +141,12 @@ const doctorScreenStack = ({navigation}) => {
   );
 };
 
-const patientScreenStack = ({navigation}) => {
-  return (
-    <Stack.Navigator
-      initialRouteName="SettingsScreen"
-      screenOptions={{
-        headerLeft: () => (
-          <NavigationDrawerHeader navigationProps={navigation} />
-        ),
-        headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}>
-    
-       <Stack.Screen
-        name="PatientScreen"
-        component={Patient}
-        options={{
-          title: 'Patients ', //Set Header Title
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
 
-const appointScreenStack = ({navigation}) => {
-  return (
-    <Stack.Navigator
-      initialRouteName="SettingsScreen"
-      screenOptions={{
-        headerLeft: () => (
-          <NavigationDrawerHeader navigationProps={navigation} />
-        ),
-        headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}>
-    
-       <Stack.Screen
-        name="AppointScreen"
-        component={Appoint}
-        options={{
-          title: 'Appointments ', //Set Header Title
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
 
 const DrawerNavigatorRoutes = (props) => {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
-
         activeTintColor: '#cee1f2',
         color: '#cee1f2',
         itemStyle: {marginVertical: 5, color: 'white'},
@@ -147,37 +158,17 @@ const DrawerNavigatorRoutes = (props) => {
 
       drawerContent={CustomSidebarMenu}
     >
-         <Drawer.Screen
+          <Drawer.Screen
         name="Dashboard"
         options={{drawerLabel: 'Dashboard'}}
         component={homeScreenStack}
       />
-    <Drawer.Screen
-        name="DoctorScreen"
-        options={{drawerLabel: 'Doctor'}}
-        component={doctorScreenStack}
-      />
-       <Drawer.Screen
-        name="PatientScreen"
-        options={{drawerLabel: 'Patient'}}
-        component={patientScreenStack}
-      />
-       <Drawer.Screen
-        name="Appointment Screen"
-        options={{drawerLabel: 'Appointment'}}
-        component={appointScreenStack}
-      />
-            {/* <Drawer.Screen
-        name="homeScreenStack"
-        options={{drawerLabel: 'Home Screen'}}
-        component={homeScreenStack}
-      />
       <Drawer.Screen
-        name="settingScreenStack"
-        options={{drawerLabel: 'Setting Screen'}}
-        component={settingScreenStack}
-      /> */}
-
+        name="ProfileScreen"
+        options={{drawerLabel: 'Profile'}}
+        component={profileScreenStack}
+      />
+   
     </Drawer.Navigator>
   );
 };

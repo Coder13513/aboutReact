@@ -9,27 +9,95 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import login from './pages/login';
 import register from './pages/register';
+import Search from './pages/Patient/Search'
 import Dashboard from './pages/Admin/Dashboard'
 import SplashScreen from './pages/SplashScreen'
 import DrawerNavigatorRoutes from './pages/DrawerNavigatorRoutes'
+import DC from './pages/Admin/DC';
+
+import {
+  createMaterialTopTabNavigator
+} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
+const Tab = createMaterialTopTabNavigator();
+
+function TabStack() {
+  return (
+    <Tab.Navigator
+    initialRouteName="Search"
+      tabBarOptions={{
+        activeTintColor: '#FFFFFF',
+        inactiveTintColor: '#F8F8F8',
+        style: {
+          backgroundColor: '#633689',
+        },
+        labelStyle: {
+          textAlign: 'center',
+        },
+        indicatorStyle: {
+          borderBottomColor: '#87B56A',
+          borderBottomWidth: 2,
+        },
+      }}>
+      <Tab.Screen
+        name="FirstPage"
+        component={Search}
+        options={{
+          tabBarLabel: 'Search',
+          // tabBarIcon: ({ color, size }) => (
+          //   <MaterialCommunityIcons
+          //       name="home"
+          //       color={color}
+          //       size={size}
+          //     />
+          // ),
+        }}  />
+         <Tab.Screen
+        name="SecondPage"
+        component={login}
+        options={{
+          tabBarLabel: 'Login',
+          // tabBarIcon: ({ color, size }) => (
+          //   <MaterialCommunityIcons
+          //       name="settings"
+          //       color={color}
+          //       size={size}
+          //     />
+          // ),
+        }} />
+      <Tab.Screen
+        name="ThirdPage"
+        component={register}
+        options={{
+          tabBarLabel: 'Register',
+          // tabBarIcon: ({ color, size }) => (
+          //   <MaterialCommunityIcons
+          //       name="settings"
+          //       color={color}
+          //       size={size}
+          //     />
+          // ),
+        }} />
+    </Tab.Navigator>
+  );
+}
+
+
+
 
 
 const Auth = () => {
   // Stack Navigator for Login and Sign up Screen
   return (
     <Stack.Navigator initialRouteName="LoginScreen">
-      <Stack.Screen
-        name="HomeScreen"
-        component={Dashboard}
-        options={{headerShown: false}}
-      />
+    
       <Stack.Screen
         name="LoginScreen"
         component={login}
         options={{headerShown: false}}
       />
+   
       <Stack.Screen
         name="RegisterScreen"
         component={register}
@@ -44,9 +112,12 @@ const Auth = () => {
           },
         }}
       />
+      
     </Stack.Navigator>
   );
 };
+
+
 
 const App = () => {
   return (
@@ -59,19 +130,25 @@ const App = () => {
           // Hiding header for Splash Screen
           options={{headerShown: false}}
         />
-        {/* Auth Navigator: Include Login and Signup */}
-        <Stack.Screen
+         {/* Auth Navigator: Include Login and Signup */} 
+         <Stack.Screen
           name="Auth"
           component={Auth}
           options={{headerShown: true}}
-        />
+        /> 
         {/* Navigation Drawer as a landing page */}
          <Stack.Screen
           name="DrawerNavigationRoutes"
           component={DrawerNavigatorRoutes}
           // Hiding header for Navigation Drawer
           options={{headerShown: false}}
-        /> 
+        />  
+       
+         <Stack.Screen
+          name="TabStack"
+          component={TabStack}
+          options={{ title: 'Welcome' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

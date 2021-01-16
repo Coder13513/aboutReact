@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 
 // import all the components we are going to use
 import {
@@ -7,76 +7,15 @@ import {
   View,
   Text,
   Image,
-  ScrollView,
-  
+  ScrollView
 } from 'react-native';
 
 //import Card
 import { Card ,ListItem} from 'react-native-elements'; 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEdit,faTrash,faPlus,faArrowLeft} from '@fortawesome/free-solid-svg-icons'; 
-import admin from '../../apis/admin'
-import axios from 'axios'
+import { faLock,faAirFreshener,faAnchor ,faEdit,faTrash,faPlus,faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 
 const App = ({navigation}) => {
-
-  useEffect(() => {
-    console.log("123")
-   docResponse()    
-  },[])
-
-  const docResponse=()=>{
-  console.log("1234")
-    fetch("http://localhost:8000/doctor/adminList/", {
-
-        method: 'GET',
-        mode:"cors",
-        headers: {
-          
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          // 'Authorization': 'Bearer ' + value
-        },
-      }).then((response) => response.json())
-        .then((res) => {          
-          console.log(res.data)
-        })
-      }
-  // axios({
-     
-  //   "method": "GET",
-  //   "url":  "http://127.0.0.1:8000/doctor/adminList/",
-  //   "headers": {
-  //     // "Access-Control-Allow-Origin": "*", 
-  //     "content-type": "application/json",   
-     
-      
-  //   },
-  // })
-  //   .then((response) => {
-  //     console.log("in docResponse")
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // }
-
-
-
-//   const url = "http://127.0.0.1:8000/doctor/adminList/"
-
-//   const docResponse=()=>{
-//    axios.get(`${url}api data`)
-  
-//    .then((response) => {
-//     console.log(response.data);
-// }).catch((error) => {
-//     console.log(error);
-// })
-// }
-  
-
   return (
     <SafeAreaView style={styles.container}>
        < ScrollView>
@@ -91,7 +30,7 @@ const App = ({navigation}) => {
         <View style={{ flexDirection: 'row',marginTop:5 ,justifyContent:'space-between'}}>
 
         <FontAwesomeIcon icon={faArrowLeft} size={20} color={"blue"} 
-        onPress={navigation.goBack()}/>
+        onPress={() => navigation.goBack()}/>
         <FontAwesomeIcon icon={faPlus} size={20} color={"blue"}
         onPress={() => navigation.navigate('NewRoutes')}/>
 
@@ -104,7 +43,7 @@ const App = ({navigation}) => {
           <Card.Divider />
         <Text> Mobile:1234</Text>
           
-          <Text> Specialization:Dermatologists</Text>
+          <Text> Designation:Nurse</Text>
           <Text> Hospital:Ivy</Text> 
   
 <View style={{ flexDirection: 'row', justifyContent:'space-evenly',marginTop:5 }}>
@@ -123,7 +62,7 @@ const App = ({navigation}) => {
           <Card.Divider />
         <Text> Mobile:1233</Text>
           
-          <Text> Specialization:Dermatologists</Text>
+          <Text> Designation:Receptionist</Text>
           <Text> Hospital:Super</Text> 
           <View style={{ flexDirection: 'row', justifyContent:'space-evenly',marginTop:5 }}>
 <FontAwesomeIcon icon={faEdit} size={20} color={"blue"} />
@@ -139,7 +78,7 @@ const App = ({navigation}) => {
           <Card.Divider />
         <Text> Mobile:234</Text>
           
-          <Text> Specialization:Orthopaedists</Text>
+          <Text> Designation:Chemist</Text>
           <Text> Hospital:Exv</Text>    
           <View style={{ flexDirection: 'row', justifyContent:'space-evenly',marginTop:5 }}>
 <FontAwesomeIcon icon={faEdit} size={20} color={"blue"} />
@@ -148,37 +87,8 @@ const App = ({navigation}) => {
 </View>
           
         </Card>
-        <Card>
-          <Card.Title>Perrine  
-          
-                 </Card.Title>
-          <Card.Divider />
-        <Text> Mobile:234</Text>
-          
-          <Text> Specialization:Orthopaedists</Text>
-          <Text> Hospital:Exv</Text>    
-          
-          <View style={{ flexDirection: 'row', justifyContent:'space-evenly',marginTop:5 }}>
-<FontAwesomeIcon icon={faEdit} size={20} color={"blue"} />
-<FontAwesomeIcon icon={faTrash} size={20} color={"red"} />
-
-</View>
-        </Card>
-        <Card>
-          <Card.Title>Perrine  Last
-          
-                 </Card.Title>
-          <Card.Divider />
-        <Text> Mobile:234</Text>
-          
-          <Text> Specialization:Orthopaedists</Text>
-          <Text> Hospital:Exv</Text>    
-          <View style={{ flexDirection: 'row', justifyContent:'space-evenly',marginTop:5 }}>
-<FontAwesomeIcon icon={faEdit} size={20} color={"blue"} />
-<FontAwesomeIcon icon={faTrash} size={20} color={"red"} />
-
-</View>
-        </Card>
+       
+       
         
 </View>
      </View>

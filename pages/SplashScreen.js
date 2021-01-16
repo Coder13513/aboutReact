@@ -28,9 +28,9 @@ const SplashScreen = ({navigation}) => {
     //       value === null ? 'Auth' : 'DrawerNavigationRoutes'
     //     ),
     //   );
-    navigation.replace('Auth');
+    navigation.replace('TabStack');
    
-    },5000);
+    },1000);
   }, []);
 
   return (

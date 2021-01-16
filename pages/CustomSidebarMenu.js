@@ -44,8 +44,8 @@ const CustomSidebarMenu = (props) => {
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         {/* <DrawerItem
-          label="Visit Us"
-          onPress={() => Linking.openURL('https://aboutreact.com/')}
+          label="Profile"
+          onPress={() => navigation.navigate('ProfileScreen')}
           color='red'
         /> */}
         {/* <View style={styles.customItem}>
